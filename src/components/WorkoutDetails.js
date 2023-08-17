@@ -54,7 +54,7 @@ function WorkoutDetails() {
             <p>Total Distance: {totalDist.toFixed(2)} miles</p>
             <p>Total Time: {totalTime} minutes</p>
             <p>Average Speed: {avgSpeed.toFixed(2)} mph</p>
-            <MapContainer center={[workout.coordinates[0].lat, workout.coordinates[0].lng]} zoom={13} style={{ width: '50%', height: '400px' }}>
+            <MapContainer center={[workout.coordinates[0].lat, workout.coordinates[0].lng]} zoom={13} style={{ width: '100%', height: '400px' }}>
                 <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
                 <Polyline positions={workout.coordinates.map(coord => [coord.lat, coord.lng])} color='blue' />
             </MapContainer>
