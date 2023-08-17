@@ -8,6 +8,7 @@ delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: process.env.PUBLIC_URL + '/navx2.png',
   iconUrl: process.env.PUBLIC_URL + '/nav.png',
+  iconSize: [50,50],
   shadowSize: [0, 0]
 });
 
