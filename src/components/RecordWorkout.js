@@ -68,20 +68,29 @@ function RecordWorkout({ addWorkout, currentLocation }) {
             timeStarted,
             coordinates
         };
-
-        // Persist to db.json
-        fetch('http://localhost:3000/workouts', {
+    
+        // Persist to Netlify function
+        fetch('https://motoman.netlify.app/.netlify/functions/create', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(newWorkout),
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
             addWorkout(data);
             setTimeStarted('');
             setCoordinates([]);
         })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error.message);
+        });
     };
+    
 
     return (
         < >
