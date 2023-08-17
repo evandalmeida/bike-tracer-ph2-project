@@ -26,7 +26,7 @@ function UpdateView({ currentLocation }) {
 function WorkoutMap({ workouts, currentLocation }) {
 
     return (
-        <MapContainer classname="workoutmap" center={currentLocation || [35, 139]}   zoom={5}  style={{ width: '50%', height: '400px'}}>
+        <MapContainer classname="workoutmap" center={currentLocation || [35, 139]}   zoom={5}  style={{ width: '100%', height: '400px'}}>
             <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
