@@ -3,35 +3,39 @@ import { Link } from 'react-router-dom';
 
 function WorkoutList() {
     const [workouts, setWorkouts] = useState([]);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        // Fetch all workouts using the getAll function on component mount
-        fetch('/.netlify/functions/getAll')
-            .then(response => response.json())
+        fetch('http://localhost:3000/workouts')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Failed to fetch workouts");
+                }
+                return response.json();
+            })
             .then(data => setWorkouts(data))
-            .catch(error => console.error('Error fetching workouts:', error));
+            .catch(err => setError(err.message));
     }, []);
 
     const handleDelete = (workoutId) => {
-        // Call the delete function to remove the workout
-        fetch(`/.netlify/functions/delete/${workoutId}`, {
-            method: 'DELETE'
-        })
-        .then(() => {
-            // Remove the workout from local state as well
-            setWorkouts(prevWorkouts => prevWorkouts.filter(w => w.id !== workoutId));
-        })
-        .catch(error => console.error('Error deleting workout:', error));
+        fetch(`http://localhost:3000/workouts/${workoutId}`, {
+            method: 'DELETE'})
+        .then(() => {setWorkouts(prevWorkouts => prevWorkouts.filter(w => w.id !== workoutId))})
     };
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
 
     return (
         <div className="workout-list">
             <h2>All Workouts</h2>
-            <ul>
+            <ul className="no-bullets">
                 {workouts.map((workout) => (
                     <li key={workout.id}>
-                        <Link to={`/workouts/${workout.id}`}>{workout.date}</Link> 
-                        <button onClick={() => handleDelete(workout.id)}>Delete</button>
+                        <button onClick={() => handleDelete(workout.id)}> 
+                            <Link to={`/workouts/${workout.id}`}>{workout.date}</Link> 
+                        </button>
                     </li>
                 ))}
             </ul>

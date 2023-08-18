@@ -1,16 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
-function Navbar() {
+export default function Navbar() {
+    const location = useLocation();
+
     return (
-        <nav className="navbar">
-            <Link className="Home" to="/">Home</Link>
+        <nav id="navbar">
+            {location.pathname !== "/" && <Link id="Home" to="/">Home</Link>}
             <br/>
-            <Link className="All Workouts" to="/all-workouts">All Workouts</Link>
+            <Link id="All Workouts" to="/allworkouts">All Workouts</Link>
             <br/>
-            <Link className="Search"to="/search">Search</Link>
+            <Link id="New Workout" to="/newworkout">Add Your Next Workout</Link>
+            <br/>
+            <Link id="Search" to="/search">Search</Link>
         </nav>
     );
 }
-
-export default Navbar;

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
-
 import L from 'leaflet';
 
 delete L.Icon.Default.prototype._getIconUrl;
@@ -24,25 +23,31 @@ function UpdateView({ currentLocation }) {
     return null;
 }
 
-function WorkoutMap({ workouts, currentLocation }) {
+function WorkoutMap({ workouts = [], currentLocation }) {
 
     return (
-        <MapContainer classname="workoutmap" center={currentLocation || [35, 139]}   zoom={5}  style={{ width: '100%', height: '400px'}}>
+        <div className="workoutmap">
+        <MapContainer  className="map-container" center={currentLocation || [35, 139]} zoom={5}  style={{ position: "relative", height: '75vh',    width: "50vw"}}>
             <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            />
-            {currentLocation ? <Marker position={currentLocation}><Popup>You are here</Popup></Marker> : null}
-            {workouts.map(workout => 
+                />
+            {currentLocation ? <Marker position={currentLocation}><Popup>You're Bike</Popup></Marker> : null}
+            {workouts.flatMap(workout => 
                 workout.coordinates.map(coord => (
                     <Marker key={coord.timestamp} position={[coord.lat, coord.lng]}>
                         <Popup>{coord.timestamp}</Popup>
                     </Marker>
                 ))
-            )}
+                )}
             <UpdateView currentLocation={currentLocation} />
         </MapContainer>
+        </div>
+    
     );
 }
 
 export default WorkoutMap;
+
+
+

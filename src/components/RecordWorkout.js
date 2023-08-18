@@ -1,3 +1,4 @@
+import WeeklyCalendar from './WeeklyCalendar';
 import React, { useState } from 'react';
 import WorkoutMap from './WorkoutMap';
 
@@ -14,7 +15,7 @@ const throttle = (func, limit) => {
     }
 };
 
-function RecordWorkout({ addWorkout, currentLocation }) {
+function RecordWorkout({ addWorkout , currentLocation , workouts }) {
     const [isRecording, setIsRecording] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
     const [timeStarted, setTimeStarted] = useState('');
@@ -34,15 +35,19 @@ function RecordWorkout({ addWorkout, currentLocation }) {
         };
 
         if (navigator.geolocation) {
-            watcher = navigator.geolocation.watchPosition(throttle(position => {
+            watcher = navigator.geolocation.watchPosition(
+        throttle(position => {
                 setCoordinates(prevCoords => [...prevCoords, {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude,
                     timestamp: new Date(position.timestamp).toLocaleTimeString()
                 }]);
-            }, 1000), (error) => {
-                console.error("Error obtaining position: ", error);
-            }, options);
+            }, 1000), 
+        error => {
+            console.error("Error retrieving geolocation data:", error);
+        }, 
+        options
+    );
         }
     };
 
@@ -69,51 +74,44 @@ function RecordWorkout({ addWorkout, currentLocation }) {
             coordinates
         };
     
-        // Persist to Netlify function
-        fetch('https://motoman.netlify.app/.netlify/functions/create', {
+        fetch('http://localhost:3000/workouts', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(newWorkout),
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
+            body: JSON.stringify(newWorkout)})
+        .then(response => response.json())
         .then(data => {
             addWorkout(data);
             setTimeStarted('');
             setCoordinates([]);
-        })
-        .catch(error => {
-            console.error('There was a problem with the fetch operation:', error.message);
         });
     };
     
-    
 
     return (
-        < >
+        <div>
             <WorkoutMap workouts={[{ coordinates }]} currentLocation={currentLocation} />
-
-            {!isRecording && !isPaused ? (
-                <button onClick={startRecording}>Start Recording</button>
+            <br/>
+            
+            <div className="workout-buttons">
+                {!isRecording && !isPaused ? (
+                    <button className="button workout-button" onClick={startRecording}>Start Recording</button>
                 ) : null}
-            {isRecording && !isPaused ? (
-                <button onClick={pauseRecording}>Pause Recording</button>
+                {isRecording && !isPaused ? (
+                    <button className="button workout-button" onClick={pauseRecording}>Pause Recording</button>
                 ) : null}
-            {isPaused ? (
-                <button onClick={startRecording}>Continue Recording</button>
+                {isPaused ? (
+                    <button className="button workout-button" onClick={startRecording}>Continue Recording</button>
                 ) : null}
-            {isRecording || isPaused ? (
-                <button onClick={stopRecording}>Stop Recording</button>
+                {isRecording || isPaused ? (
+                    <button className="button workout-button" onClick={stopRecording}>Stop Recording</button>
                 ) : null}
-            {!isRecording && !isPaused && timeStarted ? (
-                <button onClick={handleSave}>Save Workout</button>
+                {!isRecording && !isPaused && timeStarted ? (
+                    <button className="button workout-button" onClick={handleSave}>Save Workout</button>
                 ) : null}
-        </>
-
+            </div>
+            <br/>
+            <WeeklyCalendar workouts={workouts}/> 
+        </div>
     );
 }
 

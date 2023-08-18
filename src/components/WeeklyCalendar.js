@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function WeeklyCalendar({ workouts }) {
+function WeeklyCalendar({ workouts = [] }) {
     
     const oneWeekAgo = new Date();
     oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
@@ -12,13 +12,8 @@ function WeeklyCalendar({ workouts }) {
             <h2>Last Week's Workouts</h2>
             <ul>
                 {lastWeekWorkouts.map((workout, index) => (
-                    <li key={index}>
-                        <span>{new Date(workout.date).toLocaleDateString()}</span>
-                        <Link
-                            to={`/workout/${workout.id}`}
-                        >
-                            View
-                        </Link>
+                    <li key={index} className="no-bullets"> 
+                        <Link to={`/workouts/${workout.id}`}> <span>{new Date(workout.date).toLocaleDateString()}</span></Link>
                     </li>
                 ))}
             </ul>

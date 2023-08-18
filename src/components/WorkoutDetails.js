@@ -22,7 +22,7 @@ function total_distance(coordinates) {
             { lat: coordinates[i].lat, lng: coordinates[i].lng }
         );
     }
-    return distance * 0.621371;  // Conversion from km to miles
+    return distance * 0.621371;
 }
 
 function averageSpeed(distance, duration) {
@@ -35,20 +35,16 @@ function WorkoutDetails() {
     const { id } = useParams();
 
     useEffect(() => {
-        // Fetch workout details using the getById function on component mount
-        fetch(`/.netlify/functions/getById/${id}`)
+        fetch(`http://localhost:3000/workouts/${id}`)
             .then(response => response.json())
-            .then(data => setWorkout(data))
-            .catch(error => console.error('Error fetching workout details:', error));
+            .then(data => setWorkout(data)); 
     }, [id]);
-    
-    if (!workout) {
-        return <div>Loading...</div>;
-    }
 
-    const totalDist = workout.coordinates?.length ? total_distance(workout.coordinates) : 0;
-    const totalTime = workout.coordinates?.length ? workout.coordinates.length * 0.5 : 0; 
+    const totalDist = workout?.coordinates?.length ? total_distance(workout.coordinates) : 0;
+    const totalTime = workout?.coordinates?.length ? workout.coordinates.length * 0.5 : 0; 
     const avgSpeed = totalDist && totalTime ? averageSpeed(totalDist, totalTime * 60) : 0; 
+
+    if (!workout) return <div>Loading...</div>;
 
     return (
         <div className="workout-details">
@@ -59,7 +55,7 @@ function WorkoutDetails() {
             <p>Average Speed: {avgSpeed.toFixed(2)} mph</p>
             <MapContainer center={[workout.coordinates[0].lat, workout.coordinates[0].lng]} zoom={13} style={{ width: '100%', height: '400px' }}>
                 <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                <Polyline positions={workout.coordinates.map(coord => [coord.lat, coord.lng])} color='blue' />
+                <Polyline positions={workout.coordinates.map(coord => [coord.lat, coord.lng])} color='green' />
             </MapContainer>
         </div>
     );

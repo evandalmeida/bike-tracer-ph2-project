@@ -1,38 +1,42 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
 function Search() {
-    const [searchDate, setSearchDate] = useState(new Date());
+    const [searchDate, setSearchDate] = useState(null);
     const [workouts, setWorkouts] = useState([]);
     const [results, setResults] = useState([]);
 
     useEffect(() => {
-        // Fetch all workouts using the getAll function on component mount
-        fetch('/.netlify/functions/getAll')
+        fetch('http://localhost:3000/workouts')
             .then(response => response.json())
             .then(data => setWorkouts(data))
-            .catch(error => console.error('Error fetching workouts:', error));
     }, []);
 
     const handleSearch = () => {
-        const selectedDate = searchDate.toLocaleDateString();
-        const filtered = workouts.filter(workout => workout.date === selectedDate);
-        setResults(filtered);
+        if (searchDate) {
+            const selectedDate = searchDate.toLocaleDateString();
+            const filtered = workouts.filter(workout => workout.date === selectedDate);
+            setResults(filtered);
+        }
     };
 
     return (
         <div className="search-container">
-            <DatePicker 
+            <DatePicker className="date-picker" 
                 selected={searchDate}
+                placeholderText='Select Date Below'
                 onChange={(date) => setSearchDate(date)}
             />
-            <button onClick={handleSearch}>Search</button>
+            <button className="button" onClick={handleSearch}>Search</button>
             <ul>
                 {results.map((workout) => (
-                    <li key={workout.id}>
-                        {workout.date} - {workout.timeStarted}
-                    </li>
+                    <Link to={`/workout-details/${workout.id}`} key={workout.id}>
+                        <div className="search-result">
+                            {workout.date} - {workout.timeStarted}
+                        </div>
+                    </Link>
                 ))}
             </ul>
         </div>
