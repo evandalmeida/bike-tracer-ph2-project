@@ -1,4 +1,5 @@
 @import '~leaflet/dist/leaflet.css';
+
 #header h1 {
     text-align: center;
 }
@@ -213,4 +214,42 @@ body {
 
 .weekly-calendar li a:hover {
     color: #0056b3; /* Darker blue on hover */
+}
+/* Enhancements for the workout link */
+.workout-link {
+    display: block;
+    font-size: 1.2em; /* Increase the font size */
+    font-weight: 500; /* Make the font a bit bolder */
+    color: #0056b3; /* A more pronounced color */
+    text-decoration: none; /* Remove the default underline */
+    margin-bottom: 15px; /* Slightly increase the spacing */
+    transition: color 0.3s; /* Smooth transition for hover effects */
+}
+
+.workout-link:hover {
+    color: #003580; /* A darker shade on hover */
+}
+
+/* Styling for the delete button */
+.delete-button {
+    display: flex;
+    flex-direction: row;/* Make the button inline but still allow for width/height */
+    width: 24px; /* Fixed width for the button */
+    height: 24px; /* Fixed height for the button */
+    background-color: #e74c3c; /* Red color for deletion */
+    color: white; /* Text color */
+    text-align: center; /* Center the "X" text */
+    border-radius: 50%; /* Make the button round */
+    border: none; /* Remove default borders */
+    cursor: pointer; /* Indicate it's clickable */
+    transition: background-color 0.3s; /* Smooth transition for hover effects */
+}
+
+.delete-button:hover {
+    background-color: #c0392b; /* A darker shade of red on hover */
+}
+
+/* If you prefer, you can add an outline to the button to make it more visible on focus for accessibility */
+.delete-button:focus {
+    outline: 2px solid #555; /* Dark outline */
 }

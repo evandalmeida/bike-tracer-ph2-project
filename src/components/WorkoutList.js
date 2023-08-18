@@ -26,21 +26,21 @@ function WorkoutList() {
     if (error) {
         return <div>Error: {error}</div>;
     }
-
     return (
-        <div className="workout-list">
+        <div className="weekly-calendar">
             <h2>All Workouts</h2>
             <ul className="no-bullets">
                 {workouts.map((workout) => (
                     <li key={workout.id}>
-                        <button onClick={() => handleDelete(workout.id)}> 
-                            <Link to={`/workouts/${workout.id}`}>{workout.date}</Link> 
-                        </button>
+                        <Link className="workout-link" to={`/workouts/${workout.id}`}>{workout.date}</Link>
+                        <button className="delete-button" onClick={() => handleDelete(workout.id)}>X</button>
                     </li>
                 ))}
             </ul>
         </div>
     );
+    
+    
 }
 
 export default WorkoutList;

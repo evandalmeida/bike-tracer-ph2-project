@@ -28,23 +28,35 @@ function total_distance(coordinates) {
 function averageSpeed(distance, duration) {
     return distance / (duration / 3600); 
 }
-
 function WorkoutDetails() {
     const [workout, setWorkout] = useState(null);
+    const [error, setError] = useState(null);
     
     const { id } = useParams();
 
     useEffect(() => {
         fetch(`http://localhost:3000/workouts/${id}`)
-            .then(response => response.json())
-            .then(data => setWorkout(data)); 
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (!data.coordinates || !Array.isArray(data.coordinates)) {
+                    throw new Error("Invalid coordinate data");
+                }
+                setWorkout(data);
+            })
+            .catch(err => setError(err.message));
     }, [id]);
 
-    const totalDist = workout?.coordinates?.length ? total_distance(workout.coordinates) : 0;
-    const totalTime = workout?.coordinates?.length ? workout.coordinates.length * 0.5 : 0; 
-    const avgSpeed = totalDist && totalTime ? averageSpeed(totalDist, totalTime * 60) : 0; 
-
+    if (error) return <div>Error: {error}</div>;
     if (!workout) return <div>Loading...</div>;
+
+    const totalDist = total_distance(workout.coordinates);
+    const totalTime = workout.coordinates.length * 0.5;
+    const avgSpeed = averageSpeed(totalDist, totalTime * 60);
 
     return (
         <div className="workout-details">
