@@ -31,14 +31,17 @@ function averageSpeed(distance, duration) {
 
 function WorkoutDetails() {
     const [workout, setWorkout] = useState(null);
+    
     const { id } = useParams();
 
     useEffect(() => {
-        fetch(`http://localhost:3000/workouts/${id}`)
+        // Fetch workout details using the getById function on component mount
+        fetch(`/.netlify/functions/getById/${id}`)
             .then(response => response.json())
             .then(data => setWorkout(data))
+            .catch(error => console.error('Error fetching workout details:', error));
     }, [id]);
-
+    
     if (!workout) {
         return <div>Loading...</div>;
     }
@@ -61,5 +64,4 @@ function WorkoutDetails() {
         </div>
     );
 }
-
 export default WorkoutDetails;

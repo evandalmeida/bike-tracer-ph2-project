@@ -60,7 +60,7 @@ function RecordWorkout({ addWorkout, currentLocation }) {
             navigator.geolocation.clearWatch(watcher);
         }
     };
-
+    
     const handleSave = () => {
         const newWorkout = {
             id: Date.now(),
@@ -90,6 +90,7 @@ function RecordWorkout({ addWorkout, currentLocation }) {
             console.error('There was a problem with the fetch operation:', error.message);
         });
     };
+    
     
 
     return (
