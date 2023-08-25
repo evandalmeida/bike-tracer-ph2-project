@@ -14,7 +14,7 @@
     justify-self: center;
 }
 
-/* Navbar container */
+
 #navbar {
     display: flex;
     flex-direction: row;
@@ -23,7 +23,7 @@
     height: 25vh;
 }
 
-/* Individual Navbar links */
+
 #navbar a {
     margin: 10px;
     text-decoration: none;
@@ -39,7 +39,7 @@
     color: #fff;
 }
 
-/* Styling for the search button */
+
 .button, .workout-button {
     display: flex;
     justify-content: center;
@@ -164,92 +164,95 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Centers content vertically */
+    justify-content: center; 
     height: 25vh;
-    width: 30%; /* Control the width of the calendar */
-    margin: auto; /* Centers the calendar horizontally in its parent container */
-    background-color: white; /* vivid orange */
-    border-radius: 20px; /* Rounded corners for the calendar */
-    padding: 20px; /* Space inside the calendar */
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); /* A subtle shadow */
+    width: 30%;
+    margin: auto;
+    background-color: white; 
+    border-radius: 20px; 
+    padding: 20px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); 
 }
 
 .weekly-calendar h2 {
     font-size: 1.5em;
     font-weight: 500;
     color: #333;
-    margin-bottom: 20px; /* Space between title and list */
+    margin-bottom: 20px;
 }
 
 .weekly-calendar ul {
-    width: 100%; /* Full width of the parent */
+    width: 100%; 
     padding: 0;
-    list-style-type: none; /* Removes bullet points */
+    list-style-type: none; 
 }
 
 
 .weekly-calendar li:last-child {
-    border-bottom: none; /* Remove border for the last item */
+    border-bottom: none; 
 }
 
 .weekly-calendar li:hover {
-    background-color: #e9e9e9; /* Light gray background on hover */
+    background-color: #e9e9e9; 
 }
 
 .weekly-calendar li {
-    display: flex; /* Convert list items to flex containers */
-    align-items: center; /* Center content vertically */
-    justify-content: center; /* Center content horizontally */
-    padding: 10px 15px; /* Padding around each list item */
-    border-bottom: 1px solid #ddd; /* Light border at the bottom of each list item */
-    transition: background-color 0.3s; /* Transition for hover effect */
-    font-size: 1.2em; /* Make the font size bigger */
+    display: flex; 
+    align-items: center;
+    justify-content: center; 
+    padding: 10px 15px; 
+    border-bottom: 1px solid #ddd; 
+    transition: background-color 0.3s;
+    font-size: 1.2em; 
 }
 
 .weekly-calendar li a {
-    text-decoration: none; /* Remove the default underline */
-    color: black; /* Black color for the link */
-    transition: color 0.3s; /* Transition for hover effect */
+    text-decoration: none; 
+    color: black;
+    transition: color 0.3s; 
 }
 
 .weekly-calendar li a:hover {
-    color: #0056b3; /* Darker blue on hover */
+    color: #0056b3; 
 }
-/* Enhancements for the workout link */
+
 .workout-link {
     display: block;
-    font-size: 1.2em; /* Increase the font size */
-    font-weight: 500; /* Make the font a bit bolder */
-    color: #0056b3; /* A more pronounced color */
-    text-decoration: none; /* Remove the default underline */
-    margin-bottom: 15px; /* Slightly increase the spacing */
-    transition: color 0.3s; /* Smooth transition for hover effects */
+    font-size: 1.2em; 
+    font-weight: 500;
+    color: #0056b3;
+    text-decoration: none; 
+    margin-bottom: 15px; 
+    transition: color 0.3s; 
 }
 
 .workout-link:hover {
-    color: #003580; /* A darker shade on hover */
+    color: #003580; 
 }
 
-/* Styling for the delete button */
 .delete-button {
     display: flex;
-    flex-direction: row;/* Make the button inline but still allow for width/height */
-    width: 24px; /* Fixed width for the button */
-    height: 24px; /* Fixed height for the button */
-    background-color: #e74c3c; /* Red color for deletion */
-    color: white; /* Text color */
-    text-align: center; /* Center the "X" text */
-    border-radius: 50%; /* Make the button round */
-    border: none; /* Remove default borders */
-    cursor: pointer; /* Indicate it's clickable */
-    transition: background-color 0.3s; /* Smooth transition for hover effects */
+    flex-direction: row;
+    width: 24px; 
+    height: 24px; 
+    background-color: #e74c3c; 
+    color: white; 
+    text-align: center; 
+    border-radius: 50%; 
+    border: none; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
 }
 
 .delete-button:hover {
-    background-color: #c0392b; /* A darker shade of red on hover */
+    background-color: #c0392b; 
 }
 
-/* If you prefer, you can add an outline to the button to make it more visible on focus for accessibility */
 .delete-button:focus {
-    outline: 2px solid #555; /* Dark outline */
+    outline: 2px solid #555; 
 }
+
+.leaflet-container {
+    height: 400px;
+    width: 100%;
+  }

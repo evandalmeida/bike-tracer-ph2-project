@@ -15,7 +15,7 @@ export default function App() {
       .then(response => response.json())
       .then(data => setWorkouts(data));
       
-    // Fetch the current location using Geolocation API
+
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
         setCurrentLocation([position.coords.latitude, position.coords.longitude]);
