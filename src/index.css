@@ -1,9 +1,15 @@
 @import '~leaflet/dist/leaflet.css';
 
-#header h1 {
-    text-align: center;
+.header {
+    font-size: 3.5em;
+    font-weight: bolder;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center; 
+    margin-top: 50px;
 }
-
 
 .no-bullets {
     list-style-type: none;
@@ -20,12 +26,13 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    height: 25vh;
+    height: 10vh;
 }
 
 
 #navbar a {
     margin: 10px;
+    font-size: 1em;
     text-decoration: none;
     color: #333;
     padding: 5px 10px;
@@ -37,6 +44,7 @@
 #navbar a:hover {
     background-color: #333;
     color: #fff;
+    text-shadow: 2px 2px 4px #FFA500;
 }
 
 
@@ -111,10 +119,6 @@
     border-radius: 5px;
 }
 
-body {
-    height: 100vh;
-    background: linear-gradient(307deg, #FF8C00, #1E90FF);
-}
 
 .slider-thumb::before {
     position: absolute;
@@ -149,7 +153,7 @@ body {
 }
 
 .map-container {
-    border-radius: 38px; 
+    border-radius: 20px; 
     overflow: hidden; 
 }
 
@@ -160,26 +164,58 @@ body {
     gap: 10px;
 }
 
+.workouts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    width: 50%;
+    margin: auto;
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    justify-content: flex-start;
+}
+
+.workouts h2 {
+    font-size: 2em;
+}
+
+.list-items {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
 .weekly-calendar {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
     height: 25vh;
-    width: 30%;
+    width: 50%;
     margin: auto;
-    background-color: white; 
-    border-radius: 20px; 
+    background-color: white;
+    border-radius: 20px;
     padding: 20px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    justify-content: flex-start;
 }
+
+
 
 .weekly-calendar h2 {
     font-size: 1.5em;
     font-weight: 500;
     color: #333;
     margin-bottom: 20px;
+
 }
+
 
 .weekly-calendar ul {
     width: 100%; 
@@ -220,14 +256,16 @@ body {
     display: block;
     font-size: 1.2em; 
     font-weight: 500;
-    color: #0056b3;
+    color: #003580; 
     text-decoration: none; 
     margin-bottom: 15px; 
     transition: color 0.3s; 
+    width: 100%;
+    padding-right: 50px;
 }
 
 .workout-link:hover {
-    color: #003580; 
+    color: #FFA500;
 }
 
 .delete-button {

@@ -1,21 +1,27 @@
-import WeeklyCalendar from './WeeklyCalendar';
 import React, { useState } from 'react';
+
+// COMPONENTS
+import WeeklyCalendar from './WeeklyCalendar';
 import WorkoutMap from './WorkoutMap';
 
+// throttle helps with refreshing current location
 const throttle = (func, limit) => {
     let inThrottle;
+
     return function() {
         const args = arguments;
         const context = this;
+
         if (!inThrottle) {
             func.apply(context, args);
             inThrottle = true;
             setTimeout(() => inThrottle = false, limit);
-        }
-    }
+        };
+    };
 };
 
-function RecordWorkout({ addWorkout , currentLocation , workouts }) {
+export default function RecordWorkout({ addWorkout , currentLocation , workouts }) {
+
     const [isRecording, setIsRecording] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
     const [timeStarted, setTimeStarted] = useState('');
@@ -23,9 +29,8 @@ function RecordWorkout({ addWorkout , currentLocation , workouts }) {
     let watcher = null;
 
     const startRecording = () => {
-        if (!isPaused) {
-            setTimeStarted(new Date().toLocaleTimeString());
-        }
+        if (!isPaused) {setTimeStarted(new Date().toLocaleTimeString())};
+
         setIsRecording(true);
         setIsPaused(false);
 
@@ -36,13 +41,13 @@ function RecordWorkout({ addWorkout , currentLocation , workouts }) {
 
         if (navigator.geolocation) {
             watcher = navigator.geolocation.watchPosition(
-        throttle(position => {
-                setCoordinates(prevCoords => [...prevCoords, {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude,
-                    timestamp: new Date(position.timestamp).toLocaleTimeString()
+                throttle(position => {
+                        setCoordinates(prevCoords => [...prevCoords, {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude,
+                            timestamp: new Date(position.timestamp).toLocaleTimeString()
                 }]);
-            }, 1000), 
+        }, 1000), 
         error => {
             console.error("Error retrieving geolocation data:", error);
         }, 
@@ -86,12 +91,11 @@ function RecordWorkout({ addWorkout , currentLocation , workouts }) {
         });
     };
     
-
     return (
-        <div>
+        <>
+            <br/>
             <WorkoutMap workouts={[{ coordinates }]} currentLocation={currentLocation} />
             <br/>
-            
             <div className="workout-buttons">
                 {!isRecording && !isPaused ? (
                     <button className="button workout-button" onClick={startRecording}>Start Recording</button>
@@ -111,8 +115,7 @@ function RecordWorkout({ addWorkout , currentLocation , workouts }) {
             </div>
             <br/>
             <WeeklyCalendar workouts={workouts}/> 
-        </div>
+            <br/>
+        </>
     );
-}
-
-export default RecordWorkout;
+};

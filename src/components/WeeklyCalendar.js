@@ -9,7 +9,7 @@ function WeeklyCalendar({ workouts = [] }) {
 
     return (
         <div className="weekly-calendar">
-            <h2>Last Week's Workouts</h2>
+            <h2 >Last Week's Workouts</h2>
             <ul>
                 {lastWeekWorkouts.map((workout, index) => (
                     <li key={index} className="no-bullets"> 

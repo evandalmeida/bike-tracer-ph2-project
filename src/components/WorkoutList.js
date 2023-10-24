@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+
 function WorkoutList() {
     const [workouts, setWorkouts] = useState([]);
     const [error, setError] = useState(null);
@@ -27,17 +28,18 @@ function WorkoutList() {
         return <div>Error: {error}</div>;
     }
     return (
-        <div className="weekly-calendar">
+        <div className="workouts">
             <h2>All Workouts</h2>
             <ul className="no-bullets">
                 {workouts.map((workout) => (
-                    <li key={workout.id}>
+                    <li className='list-items' key={workout.id}>
                         <Link className="workout-link" to={`/workouts/${workout.id}`}>{workout.date}</Link>
                         <button className="delete-button" onClick={() => handleDelete(workout.id)}>X</button>
                     </li>
                 ))}
             </ul>
         </div>
+        
     );
     
     
