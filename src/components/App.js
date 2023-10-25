@@ -29,7 +29,7 @@ export default function App() {
   return (
       <>
       <Router>
-        <h1 className="header">BIKE TRACE</h1>
+        <h1 className="header">BIKE TRACER</h1>
         <Navbar />
         <br/>
         <div className='maindiv'>
