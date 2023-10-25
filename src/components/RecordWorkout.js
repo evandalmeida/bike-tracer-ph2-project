@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 // COMPONENTS
-import WeeklyCalendar from './WeeklyCalendar';
 import WorkoutMap from './WorkoutMap';
 
 // throttle helps with refreshing current location
