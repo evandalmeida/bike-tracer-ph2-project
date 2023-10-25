@@ -8,9 +8,9 @@ export default function Navbar() {
         <nav id="navbar">
             {location.pathname !== "/" && <Link id="Home" to="/">Home</Link>}
             <br/>
-            <Link id="All Workouts" to="/allworkouts">All Workouts</Link>
+            <Link id="All Workouts" to="/allworkouts">All Rides</Link>
             <br/>
-            <Link id="New Workout" to="/newworkout">Add Your Next Workout</Link>
+            <Link id="New Workout" to="/newworkout">Add a Ride</Link>
             <br/>
             <Link id="Search" to="/search">Search</Link>
         </nav>

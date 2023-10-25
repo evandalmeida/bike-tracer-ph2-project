@@ -8,8 +8,11 @@ function WeeklyCalendar({ workouts = [] }) {
     const lastWeekWorkouts = workouts.filter(workout => new Date(workout.date) >= oneWeekAgo);
 
     return (
+        <div>
+        <h1 className='main'>Welcome Back Rider!</h1>
+        <br/>
         <div className="weekly-calendar">
-            <h2 >Last Week's Workouts</h2>
+            <h2 >Your Bike Rides from this Week</h2>
             <ul>
                 {lastWeekWorkouts.map((workout, index) => (
                     <li key={index} className="no-bullets"> 
@@ -17,6 +20,7 @@ function WeeklyCalendar({ workouts = [] }) {
                     </li>
                 ))}
             </ul>
+        </div>
         </div>
     );
 }

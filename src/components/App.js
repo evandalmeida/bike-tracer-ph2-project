@@ -1,14 +1,14 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-
 // COMPONENTS
 import WorkoutDetails from './WorkoutDetails';
 import RecordWorkout from './RecordWorkout';
 import WorkoutList from './WorkoutList';
+import WeeklyCalendar from './WeeklyCalendar';
 import Navbar from './Navbar';
 import Search from './Search';
-
+import Footer from './Footer';
 
 export default function App() {
   const [workouts, setWorkouts] = useState([]);
@@ -27,34 +27,42 @@ export default function App() {
   }, []);
 
   return (
-      <div className='slider-thumb'>
+      <>
       <Router>
-        <h1 className="header">WELCOME TO BIKE BLISS</h1>
+        <h1 className="header">BIKE TRACE</h1>
         <Navbar />
         <br/>
-        <Routes>
-          <Route
-            index='true'
-            path='/'
-          />
-          <Route 
-            path="/newworkout" 
-            element={<RecordWorkout addWorkout={(workout) => setWorkouts([...workouts, workout])} workouts={workouts} currentLocation={currentLocation}/>} 
-          />
-          <Route 
-            path="/workouts/:id" 
-            element={<WorkoutDetails/>} 
-          />
-          <Route 
-            path="/allworkouts" 
-            element={<WorkoutList workouts={workouts}/>} 
-          />
-          <Route 
-            path="/search" 
-            element={<Search/>} 
-          />
-        </Routes>
+        <div className='maindiv'>
+
+
+          <Routes>
+            <Route
+              index='true'
+              path='/'
+              element={ <WeeklyCalendar workouts={workouts}/> }
+            />
+            <Route 
+              path="/newworkout" 
+              element={<RecordWorkout addWorkout={(workout) => setWorkouts([...workouts, workout])} workouts={workouts} currentLocation={currentLocation}/>} 
+            />
+            <Route 
+              path="/workouts/:id" 
+              element={<WorkoutDetails/>} 
+            />
+            <Route 
+              path="/allworkouts" 
+              element={<WorkoutList workouts={workouts}/>} 
+            />
+            <Route 
+              path="/search" 
+              element={<Search/>} 
+            />
+            
+          </Routes>
+        <Footer/>
+        </div>
+
       </Router>
-    </div>
+    </>
   );
-}
+};

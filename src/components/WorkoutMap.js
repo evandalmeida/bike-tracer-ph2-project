@@ -27,7 +27,7 @@ function WorkoutMap({ workouts = [], currentLocation }) {
 
     return (
         <div className="workoutmap">
-        <MapContainer  className="map-container" center={currentLocation || [35, 139]} zoom={5}  style={{ position: "relative", height: '75vh',    width: "50vw"}}>
+        <MapContainer  className="map-container" center={currentLocation || [35, 139]} zoom={9}  style={{ position: "relative", height: '60vh',    width: "50vw"}}>
             <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

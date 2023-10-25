@@ -98,23 +98,23 @@ export default function RecordWorkout({ addWorkout , currentLocation , workouts 
             <br/>
             <div className="workout-buttons">
                 {!isRecording && !isPaused ? (
-                    <button className="button workout-button" onClick={startRecording}>Start Recording</button>
+                    <button className="button start-button" onClick={startRecording}>Start Recording</button>
                 ) : null}
                 {isRecording && !isPaused ? (
-                    <button className="button workout-button" onClick={pauseRecording}>Pause Recording</button>
+                    <button className="button pause-button" onClick={pauseRecording}>Pause Recording</button>
                 ) : null}
                 {isPaused ? (
-                    <button className="button workout-button" onClick={startRecording}>Continue Recording</button>
+                    <button className="button start-button" onClick={startRecording}>Continue Recording</button>
                 ) : null}
                 {isRecording || isPaused ? (
-                    <button className="button workout-button" onClick={stopRecording}>Stop Recording</button>
+                    <button className="button stop-button" onClick={stopRecording}>Stop Recording</button>
                 ) : null}
                 {!isRecording && !isPaused && timeStarted ? (
-                    <button className="button workout-button" onClick={handleSave}>Save Workout</button>
+                    <button className="button save-button" onClick={handleSave}>Save Workout</button>
                 ) : null}
             </div>
             <br/>
-            <WeeklyCalendar workouts={workouts}/> 
+       
             <br/>
         </>
     );

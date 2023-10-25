@@ -60,25 +60,27 @@ function WorkoutDetails() {
 
     return (
         <div className="workout-details">
-            <h2>Workout on {workout.date}</h2>
-            <p>Started at: {workout.timeStarted}</p>
-            <p>Total Distance: {totalDist.toFixed(2)} miles</p>
-            <p>Total Time: {totalTime} minutes</p>
-            <p>Average Speed: {avgSpeed.toFixed(2)} mph</p>
-            <MapContainer
-                center={[workout.coordinates[0].lat, workout.coordinates[0].lng]} 
-                zoom={13}
-                style={{width: '100%', height: '400px'}}
-                >
-                <TileLayer 
+            <p>You rode on {workout.date} at {workout.timeStarted} and biked a total distance of {totalDist.toFixed(2)} miles for {totalTime} minutes</p>
+            <div className='workoutmap'></div>
+                <MapContainer 
+                    center={[workout.coordinates[0].lat, workout.coordinates[0].lng]} 
+                    zoom={13}
+                    style={{ width: '100%', height: '100%' }}
+                    >
+
+                    <TileLayer 
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" 
-                />
-                
-                <Polyline 
-                    positions={workout.coordinates.map(c => [c.lat, c.lng])}
-                    color="blue"
-                />
-            </MapContainer>
+                    />
+
+                    <Polyline 
+                    key={workout.id}
+                    positions={workout.coordinates.map(coord => [coord.lat, coord.lng])}
+                    color='red' 
+                    />
+                </MapContainer>
+            <div/>
+            <p>Average Speed: {avgSpeed.toFixed(2)} mph</p>
+            
         </div>
     );
 }

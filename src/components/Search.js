@@ -32,11 +32,11 @@ function Search() {
             <button className="button" onClick={handleSearch}>Search</button>
             <ul>
                 {results.map((workout) => (
+                    <div className="search-result">
                     <Link to={`/workout-details/${workout.id}`} key={workout.id}>
-                        <div className="search-result">
                             {workout.date} - {workout.timeStarted}
-                        </div>
                     </Link>
+                        </div>
                 ))}
             </ul>
         </div>

@@ -28,8 +28,8 @@ function WorkoutList() {
         return <div>Error: {error}</div>;
     }
     return (
-        <div className="workouts">
-            <h2>All Workouts</h2>
+        <div className="weekly-calendar">
+            <h2>All Your Bike Rides</h2>
             <ul className="no-bullets">
                 {workouts.map((workout) => (
                     <li className='list-items' key={workout.id}>
