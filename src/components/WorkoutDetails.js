@@ -28,7 +28,8 @@ function total_distance(coordinates) {
 function averageSpeed(distance, duration) {
     return distance / (duration / 3600); 
 }
-function WorkoutDetails() {
+
+export default function WorkoutDetails() {
     const [workout, setWorkout] = useState(null);
     const [error, setError] = useState(null);
     
@@ -60,28 +61,25 @@ function WorkoutDetails() {
 
     return (
         <div className="workout-details">
-            <p>You rode on {workout.date} at {workout.timeStarted} and biked a total distance of {totalDist.toFixed(2)} miles for {totalTime} minutes</p>
-            <div className='workoutmap'></div>
-                <MapContainer 
+            <p>You rode on {workout.date} at {workout.timeStarted} and you biked a total distance of {totalDist.toFixed(2)} miles in {totalTime} minutes</p>
+            <br/>
+            <MapContainer 
                     center={[workout.coordinates[0].lat, workout.coordinates[0].lng]} 
                     zoom={13}
                     style={{ width: '100%', height: '100%' }}
-                    >
+                    className='map-container'
+                >
 
-                    <TileLayer 
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" 
-                    />
+                <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
-                    <Polyline 
+                <Polyline 
                     key={workout.id}
                     positions={workout.coordinates.map(coord => [coord.lat, coord.lng])}
                     color='red' 
-                    />
-                </MapContainer>
-            <div/>
+                />
+            </MapContainer>
+            <br/>
             <p>Average Speed: {avgSpeed.toFixed(2)} mph</p>
-            
         </div>
     );
-}
-export default WorkoutDetails;
+};
