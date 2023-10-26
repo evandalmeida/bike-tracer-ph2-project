@@ -75,7 +75,8 @@ export default function WorkoutDetails() {
                 <Polyline 
                     key={workout.id}
                     positions={workout.coordinates.map(coord => [coord.lat, coord.lng])}
-                    color='red' 
+                    color='purple'
+                    solid='3px'
                 />
             </MapContainer>
             <br/>

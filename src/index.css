@@ -4,17 +4,28 @@
     font-size: 7em;
     font-weight: 900;
     text-align: center;
-    margin-top: 50px;
     letter-spacing: 2vh;
     color: white;
     text-shadow: 0px -1px 18px #FFA500;
+    margin-top: 50px;
+}
+
+@media (max-width: 768px) {
+    .header {
+        font-size: 4em; 
+        letter-spacing: 1vh;
+        margin-top: 20px;
+    }
+    .weekly-calendar {
+        width: 10vw;
+    }
 }
 
 .maindiv {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
 .maindiv p {
@@ -24,15 +35,20 @@
 
 
 #main {
-    background-color: #000000;
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(87,82,91,1) 43%, rgba(255,165,0,1) 100%), no-repeat;
     letter-spacing: 1px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    height: auto;
 }
 
 .main {
     display: flex;
     justify-content: center;
-    color: white;
     font-size: 3em;
+    color: white;
+    text-align: center;
 }
 
 ul {
@@ -45,27 +61,28 @@ ul {
 }
 
 #navbar {
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    margin-left: auto;
+    margin-right: auto;
+    height: 10vh;
+    width: auto;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    height: 10vh;
-    padding-top: 2vh;
-    padding-bottom: 2vh;
 }
 
 #navbar a {
-    margin: 10px;
-    font-size: 1.2em;
-    text-decoration: none;
-    color: white;
-    padding: 5px 10px;
-    margin-right: 50px;
-    margin-left: 50px;
+    margin: auto ;
+    padding: 10px;
     border: 1px solid white;
     border-radius: 5px;
-    transition: background-color 0.3s;
+    color: white;
+    font-size: 1.2em;
+    text-decoration: none;
     letter-spacing: 1px;
+    transition: background-color 0.3s;
 }
 
 #navbar a:hover {
@@ -76,7 +93,6 @@ ul {
 
 .workout-button {
     display: flex;
-    justify-content: center;
     align-items: center;
     justify-content: space-between;
 }
@@ -117,7 +133,7 @@ ul {
 }
 
 .button:hover,
-pause-button:hover,
+.pause-button:hover,
 .save-button:hover {
     background-color: black;
     color: white;
@@ -136,6 +152,12 @@ pause-button:hover,
     gap: 1vw;
 }
 
+.search-container input {
+    height: 5vh;
+    width: auto;
+}
+
+
 .search-result {
     color: white;
 }
@@ -149,46 +171,64 @@ pause-button:hover,
 
 
 .workout-details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     height: 70vh;
     width: 50vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     color: #fff;
 }
 
 .workout-list {
+    height: 25vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    height: 25vh;
+    align-items: center;
 }
 
-.weekly-calendar,
-.workouts {
+.weekly-calendar {
+    margin: auto;
+    height: auto;
+    width: auto;
+    padding: 20px;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    justify-content: center;
+    color: white;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
+    background-color: rgba(255, 255, 255, .15);
+    backdrop-filter: blur(5px);
+    border-radius: 5px;
+}
+
+
+.workouts {
+    margin: auto;
     height: auto;
     width: 50vw;
-    margin: auto;
-    background-color: #333;
-
-    
     padding: 20px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-    color: white;
+    display: flex;
+    flex-direction: column;
     justify-content: flex-start;
+    align-items: center;
+    color: white;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
+    background-color: rgba(255, 255, 255, .15);
+    backdrop-filter: blur(5px);
+    border-radius: 5px;
 }
+
 
 .weekly-calendar h2,
 .workouts h2 {
+    margin-bottom: 20px;
     font-size: 1.9em;
     font-weight: 500;
-    margin-bottom: 20px;
     text-align: center;
 }
 
@@ -199,13 +239,13 @@ pause-button:hover,
 
 .weekly-calendar ul,
 .workouts ul {
+    padding: 0;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    padding: 0;
     list-style-type: none;
+    align-items: center;
 }
 
 .weekly-calendar li:last-child,
@@ -220,20 +260,20 @@ pause-button:hover,
 
 .weekly-calendar li,
 .workouts li {
+    width: auto;
+    padding: 10px 15px;
+    border-bottom: 3px solid white;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 15px;
-    border-bottom: 3px solid white;
-    width: 50%;
     transition: background-color 0.3s;
-    font-size: 1.2em;
+    font-size: larger;
 }
 
 .weekly-calendar li a,
 .workouts li a {
     text-decoration: none;
-    color: black;
+    color: white;
     transition: color 0.3s;
 }
 
@@ -247,16 +287,15 @@ pause-button:hover,
 }
 
 .workout-link {
-    display: block;
-    font-size: 1.2em;
-    font-weight: 500;
-    color: #333;
-    text-decoration: none;
-    transition: color 0.3s;
     width: 100%;
     padding-right: 50px;
-    font-size: 1.4em;
+    display: block;
     text-align: center;
+    color: white;
+    font-size: 1.2em;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s;
 }
 
 .workout-link:hover {
@@ -264,20 +303,19 @@ pause-button:hover,
 }
 
 .delete-button {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 24px;
-    height: 24px;
-    background-color: #e74c3c;
-    color: white;
-    text-align: center;
     border-radius: 50%;
     padding-right: 17px;
     border: 2px solid white;
+    width: 24px;
+    height: 24px;
+    background-color: #e74c3c;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     cursor: pointer;
-    transition: background-color 0.3s;
     text-align: center;
+    color: white;
+    transition: background-color 0.3s;
 }
 
 .delete-button:hover {
@@ -285,46 +323,43 @@ pause-button:hover,
 }
 
 .map-container {
-
     overflow: hidden;
     box-shadow: 0 0 20px 17px white;
 }
 
 .workout-buttons {
-    display: flex;
-    justify-content: center;
     margin-top: 20px;
     gap: 10vw;
+    display: flex;
+    justify-content: center;
     text-shadow: 2px 2px 4px #FFA500;
 }
 
 .workouts {
+    margin: auto;
+    padding: 20px;
+    height: auto;
+    width: 30vw;
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    background-color: #333;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: auto;
-    width: 30vw;
-    margin: auto;
-    background-color: #333;
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-    color: white; /* Add this to match the text color in "weekly calendar" */
     justify-content: flex-start;
+    color: white; 
 }
 
 .workouts h2 {
-    font-size: 1.5em; /* Adjust the font size to match "weekly calendar" */
-    font-weight: 500;
     margin-bottom: 20px;
+    font-size: 1.5em;
+    font-weight: 500;
 }
 
 .list-items {
     display: flex;
     flex-direction: row;
 }
-
 
 a {
     text-decoration: none;
@@ -333,13 +368,16 @@ a {
   }
 
 footer {
-background-color: rgb(172, 157, 128);
+padding: 10px 20px;
+margin: 10vh;
+gap: 50px;
+box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
+background-color: rgba(255, 255, 255, .15);
+backdrop-filter: blur(5px);
 display: flex;
 align-items: center;
 justify-content: space-between;
-padding: 0px 20px;
-gap: 50px;
-margin: 10vh;
 border-radius: 10px;
 }
 
