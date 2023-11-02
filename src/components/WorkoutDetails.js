@@ -53,7 +53,7 @@ export default function WorkoutDetails() {
     }, [id]);
 
     if (error) return <div>Error: {error}</div>;
-    if (!workout) return <div>Loading...</div>;
+    if (!workout) return <div className='load'>LOADING...</div>;
 
     const totalDist = total_distance(workout.coordinates);
     const totalTime = workout.coordinates.length * 0.5;
@@ -61,7 +61,7 @@ export default function WorkoutDetails() {
 
     return (
         <div className="workout-details">
-            <p>You rode on {workout.date} at {workout.timeStarted} and you biked a total distance of {totalDist.toFixed(2)} miles in {totalTime} minutes</p>
+            <p>You rode on {workout.date} at {workout.timeStarted} and you biked a total distance of {totalDist.toFixed(2)} miles in {totalTime} minutes!</p>
             <br/>
             <MapContainer 
                     center={[workout.coordinates[0].lat, workout.coordinates[0].lng]} 

@@ -92,9 +92,8 @@ export default function RecordWorkout({ addWorkout , currentLocation , workouts 
     
     return (
         <>
-            <br/>
+            <h1 className='main'>Welcome Back Rider!</h1>
             <WorkoutMap workouts={[{ coordinates }]} currentLocation={currentLocation} />
-            <br/>
             <div className="workout-buttons">
                 {!isRecording && !isPaused ? (
                     <button className="button start-button" onClick={startRecording}>Start Recording</button>
@@ -112,9 +111,6 @@ export default function RecordWorkout({ addWorkout , currentLocation , workouts 
                     <button className="button save-button" onClick={handleSave}>Save Workout</button>
                 ) : null}
             </div>
-            <br/>
-       
-            <br/>
         </>
     );
 };

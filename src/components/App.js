@@ -31,10 +31,7 @@ export default function App() {
       <Router>
         <h1 className="header">BIKE TRACER</h1>
         <Navbar />
-        <br/>
         <div className='maindiv'>
-
-
           <Routes>
             <Route
               index='true'

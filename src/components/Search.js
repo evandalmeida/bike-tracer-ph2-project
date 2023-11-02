@@ -24,21 +24,24 @@ function Search() {
 
     return (
         <div className="search-container">
+            <div className='search-tools'>
+
             <DatePicker className="date-picker" 
                 selected={searchDate}
                 placeholderText='Select Date Below'
                 onChange={(date) => setSearchDate(date)}
-            />
+                />
             <button className="button" onClick={handleSearch}>Search</button>
-            <ul>
-                {results.map((workout) => (
-                    <div className="search-result">
-                    <Link to={`/workout-details/${workout.id}`} key={workout.id}>
-                            {workout.date} - {workout.timeStarted}
-                    </Link>
+            </div>
+            <div className='search-display'>
+                    {results.map((workout) => (
+                        <div className="search-result">
+                            <Link to={`/workouts/${workout.id}`} key={workout.id}>
+                                    {workout.date}'s ride at {workout.timeStarted}
+                            </Link>
                         </div>
-                ))}
-            </ul>
+                    ))}
+            </div>
         </div>
     );
 }

@@ -1,8 +1,16 @@
+/***************************************************** Global *************************/
 @import '~leaflet/dist/leaflet.css';
 
+/***************************************************** Fonts and Typography *************************/
+body {
+    font-family: 'Helvetica', sans-serif;
+    font-weight: 300;
+}
+
+/***************************************************** Header *************************/
 .header {
     font-size: 7em;
-    font-weight: 900;
+    font-weight: 700;
     text-align: center;
     letter-spacing: 2vh;
     color: white;
@@ -10,17 +18,16 @@
     margin-top: 50px;
 }
 
+/***************************************************** Responsive Header *************************/
 @media (max-width: 768px) {
     .header {
-        font-size: 4em; 
+        font-size: 3.5em;
         letter-spacing: 1vh;
         margin-top: 20px;
     }
-    .weekly-calendar {
-        width: 10vw;
-    }
 }
 
+/***************************************************** Main Content *************************/
 .maindiv {
     display: flex;
     flex-direction: column;
@@ -31,11 +38,12 @@
 .maindiv p {
     text-align: center;
     font-size: large;
+    font-weight: 300;
 }
 
-
+/***************************************************** Main Background *************************/
 #main {
-    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(87,82,91,1) 43%, rgba(255,165,0,1) 100%), no-repeat;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(87, 82, 91, 1) 43%, rgba(255, 165, 0, 1) 100%);
     letter-spacing: 1px;
     display: grid;
     align-items: center;
@@ -43,23 +51,32 @@
     height: auto;
 }
 
+/***************************************************** Main Title *************************/
 .main {
     display: flex;
     justify-content: center;
     font-size: 3em;
     color: white;
     text-align: center;
+    font-weight: 600;
+    padding: 10px;
+    margin: 10px;
+    margin-bottom: 40px;;
 }
 
+@media (max-width: 768px) {
+    .main {
+        font-size: 2em;
+    }
+}
+
+/***************************************************** List *************************/
 ul {
     list-style-type: none;
     padding-left: 0;
 }
 
-.workout-list {
-    justify-self: center;
-}
-
+/***************************************************** Navbar *************************/
 #navbar {
     padding-top: 1vh;
     padding-bottom: 1vh;
@@ -73,8 +90,14 @@ ul {
     justify-content: center;
 }
 
+@media (max-width: 768px) {
+    #navbar {
+        font-size: smaller;
+    }
+}
+
 #navbar a {
-    margin: auto ;
+    margin: auto;
     padding: 10px;
     border: 1px solid white;
     border-radius: 5px;
@@ -91,17 +114,7 @@ ul {
     text-shadow: 2px 2px 4px #FFA500;
 }
 
-.workout-button {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.button,
-.start-button,
-.save-button,
-.stop-button,
-.pause-button {
+.button {
     background-color: black;
     border: 1px solid white;
     color: white;
@@ -113,38 +126,24 @@ ul {
     font-size: 16px;
     letter-spacing: 1px;
     outline: none;
-    transition: background-color 0.3s, transform 0.3s;
+    font-weight: 500;
 }
 
-.button:hover,
-.start-button:hover {
-    background-color: black;
+.button:hover {
+    background-color: white;
     color: white;
     text-shadow: 2px 2px 4px #00ff0d;
     transform: scale(1.1);
+    border: 1px solid black;
+    color: black;
 }
 
-.button:hover,
-.stop-button:hover {
-    background-color: black;
-    color: white;
-    text-shadow: 2px 2px 4px #ff0000;
-    transform: scale(1.1);
-}
-
-.button:hover,
-.pause-button:hover,
-.save-button:hover {
-    background-color: black;
-    color: white;
-    text-shadow: 2px 2px 4px #FFA500;
-    transform: scale(1.1);
-}
-
+/***************************************************** Search Container *************************/
 .search-container {
-    justify-content: space between;
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    gap: 20px;
     align-items: center;
     padding-left: 3vw;
     justify-content: center;
@@ -153,26 +152,76 @@ ul {
 }
 
 .search-container input {
+    align-items: baseline;
+    text-align: center;
+}
+
+/***************************************************** Date Picker *************************/
+.date-picker {
+    grid-column: 1 / 2;
+    grid-row: 1;
+    justify-self: center;
+}
+
+/***************************************************** Search *************************/
+.search-tools {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.search-tools.button {
+    margin-left: 5vw;
+}
+
+
+/***************************************************** Button within Search Container *************************/
+.button {
+    grid-column: 2 / 3;
+    grid-row: 1;
+
+}
+
+/***************************************************** Search Display *************************/
+.search-display {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 3vw;
+}
+
+/***************************************************** Search Result *************************/
+.search-result {
+    padding: 10px;
+}
+
+/***************************************************** Search Container Link *************************/
+.search-container a {
+    color: white;
+    text-shadow: 0px -1px 18px white;
+    text-align: center;
+}
+
+/***************************************************** Search Container Input *************************/
+.search-container input {
     height: 5vh;
     width: auto;
 }
 
-
-.search-result {
-    color: white;
-}
-
+/***************************************************** Workout Map *************************/
 .workoutmap {
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    height: 60vh;
+    justify-content: center;
+    align-items: center;
+    padding: 1vw;
+    margin: 1vw;
 }
 
-
+/***************************************************** Workout Details *************************/
 .workout-details {
     height: 70vh;
-    width: 50vw;
+    width: 60vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -180,6 +229,18 @@ ul {
     color: #fff;
 }
 
+@media (max-width: 768px) {
+    .workout-details p:first-child {
+        font-size: small;
+        padding-bottom: 5vh;
+    }
+    .workout-details p:last-child {
+        font-size: medium;
+        padding-top: 5vh;
+    }
+}
+
+/***************************************************** Workout List *************************/
 .workout-list {
     height: 25vh;
     display: flex;
@@ -188,6 +249,7 @@ ul {
     align-items: center;
 }
 
+/***************************************************** Weekly Calendar *************************/
 .weekly-calendar {
     margin: auto;
     height: auto;
@@ -199,44 +261,35 @@ ul {
     align-items: center;
     color: white;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
-    background-color: rgba(255, 255, 255, .15);
+    background-color: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(5px);
     border-radius: 5px;
 }
 
+@media (max-width: 768px) {
+    .weekly-calendar {
+        width: 60vw;
+    }
 
-.workouts {
-    margin: auto;
-    height: auto;
-    width: 50vw;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    color: white;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
-    background-color: rgba(255, 255, 255, .15);
-    backdrop-filter: blur(5px);
-    border-radius: 5px;
+    .weekly-calendar h2 {
+        font-size: 1.5em;
+        text-align: center;
+    }
 }
 
-
-.weekly-calendar h2,
-.workouts h2 {
-    margin-bottom: 20px;
-    font-size: 1.9em;
-    font-weight: 500;
+.weekly-calendar h2 {
+    font-size: 2em;
     text-align: center;
+    font-weight: 700;
 }
 
+/***************************************************** List Items *************************/
 .list-items {
     display: flex;
     flex-direction: row;
 }
 
+/***************************************************** List for Weekly Calendar and Workouts *************************/
 .weekly-calendar ul,
 .workouts ul {
     padding: 0;
@@ -248,16 +301,19 @@ ul {
     align-items: center;
 }
 
+/***************************************************** Remove border from last list item *************************/
 .weekly-calendar li:last-child,
 .workouts li:last-child {
     border-bottom: none;
 }
 
+/***************************************************** Hover for List Items *************************/
 .weekly-calendar li:hover,
 .workouts li:hover {
     background-color: #bdbdbd;
 }
 
+/***************************************************** List Item *************************/
 .weekly-calendar li,
 .workouts li {
     width: auto;
@@ -268,8 +324,16 @@ ul {
     justify-content: center;
     transition: background-color 0.3s;
     font-size: larger;
+    font-weight: 400;
 }
 
+@media (max-width: 768px) {
+    .weekly-calendar a {
+        font-size: smaller;
+    }
+}
+
+/***************************************************** Link for List Items *************************/
 .weekly-calendar li a,
 .workouts li a {
     text-decoration: none;
@@ -277,64 +341,76 @@ ul {
     transition: color 0.3s;
 }
 
+/***************************************************** Hover for List Item Links *************************/
 .weekly-calendar li a:hover,
 .workouts li a:hover {
     color: #FFA500;
 }
 
+/***************************************************** for Specific Elements *************************/
 .no-bullets span {
     font-size: 1.4em;
 }
 
+/***************************************************** Workout Link *************************/
 .workout-link {
     width: 100%;
     padding-right: 50px;
     display: block;
     text-align: center;
     color: white;
-    font-size: 1.2em;
+    font-size: larger;
     font-weight: 500;
     text-decoration: none;
     transition: color 0.3s;
 }
 
+/***************************************************** Hover for Workout Links *************************/
 .workout-link:hover {
     color: #FFA500;
 }
 
+/***************************************************** Delete Button *************************/
 .delete-button {
     border-radius: 50%;
     padding-right: 17px;
-    border: 2px solid white;
+    border: 2px solid red;
     width: 24px;
     height: 24px;
-    background-color: #e74c3c;
+    background-color: transparent;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-self: right;
     cursor: pointer;
     text-align: center;
-    color: white;
+    color: red;
     transition: background-color 0.3s;
 }
 
+/***************************************************** Hover for Delete Button *************************/
 .delete-button:hover {
-    background-color: #c0392b;
+    background-color: #ff1900;
+    color: white;
 }
 
+/***************************************************** Map Container *************************/
 .map-container {
     overflow: hidden;
     box-shadow: 0 0 20px 17px white;
 }
 
+/***************************************************** Workout Button Container *************************/
 .workout-buttons {
     margin-top: 20px;
-    gap: 10vw;
     display: flex;
     justify-content: center;
+    align-items: center;
     text-shadow: 2px 2px 4px #FFA500;
+    margin: auto;
 }
 
+/***************************************************** Further for Workouts Container *************************/
 .workouts {
     margin: auto;
     padding: 20px;
@@ -347,41 +423,44 @@ ul {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    color: white; 
+    color: white;
 }
 
-.workouts h2 {
-    margin-bottom: 20px;
-    font-size: 1.5em;
-    font-weight: 500;
-}
-
-.list-items {
-    display: flex;
-    flex-direction: row;
-}
-
+/***************************************************** Navbar Link *************************/
 a {
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 500;
     color: black;
-  }
-
-footer {
-padding: 10px 20px;
-margin: 10vh;
-gap: 50px;
-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
-background-color: rgba(255, 255, 255, .15);
-backdrop-filter: blur(5px);
-display: flex;
-align-items: center;
-justify-content: space-between;
-border-radius: 10px;
 }
 
+/***************************************************** Footer *************************/
+footer {
+    padding: 10px 20px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 15vh;
+    margin-bottom: 30vh;
+    gap: 50px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, .15);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+}
+
+/***************************************************** Footer Image *************************/
 footer img {
-width: 35px;
-margin: 40px 5px;
+    width: 35px;
+    margin: 40px 5px;
+}
+
+/***************************************************** Loading Text *************************/
+.load {
+    font-size: 3em;
+    color: white;
+    padding-top: 10vh;
+    font-weight: bold;
+    text-shadow: 0px -1px 18px #FFA500;
 }
